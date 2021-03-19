@@ -1,0 +1,26 @@
+login:
+  retry_times: 5 # 登录重试次数
+
+users: #用户列表
+  - school_name: # 用户1 学校名称
+    username: # 用户1 用户名
+    password: # 用户1 密码
+    cron: 0 30 8 * * * # 用户1 计划任务规则
+    qq: # 用户2 推送QQ号
+
+  - school_name: # 用户2 学校名称
+    username: # 用户2 用户名
+    password: # 用户2 密码
+    cron: 0 0 9 * * * # 用户2 计划任务规则
+    qq: # 用户2 推送QQ号
+
+noticer:
+  enable: false
+  secret_key: # Qmsg酱密钥，请前往 https://qmsg.zendee.cn/ 登录后获取
+
+captcha: # 自动打码
+  enable: false
+  pd_id: # 请前往 http://www.fateadm.com 获取
+  pd_key: # 请前往 http://www.fateadm.com 获取
+
+log_level: info # 日志级别 debug/info/warning/error

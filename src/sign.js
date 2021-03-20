@@ -179,7 +179,7 @@ class Sign {
       const {message} = res.data;
       const result = {
         title: form.title,
-        succeed: message === "SUCCESS" || message === "该收集已填写无需再次填写",
+        succeed: message === "SUCCESS",
         message
       };
       results.push(result);

@@ -97,7 +97,6 @@ class Task {
   }
 
   start() {
-    this.taskHandle(this).catch(console.error);
     this.job = schedule.scheduleJob(this.user["cron"],
       () => this.taskHandle(this).catch(e => logger.error(e)));
     logger.info(`用户 ${this.user["school_name"]} ${this.user["username"]} 下次表单提交时间：` +

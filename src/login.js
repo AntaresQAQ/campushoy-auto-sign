@@ -31,9 +31,10 @@ class Login {
       params: {service: this.school_url + "/portal/login"},
       headers: {
         "Accept": "application/json, text/plain, */*",
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) " +
+        "User-Agent": "Mozilla/5.0 (Linux; Android 11; Redmi K20 Pro Build/RKQ1.200826.002) " +
           "AppleWebKit/537.36 (KHTML, like Gecko) " +
-          "Chrome/81.0.4044.122 Safari/537.36",
+          "Chrome/89.0.4389.82 " +
+          "Safari/537.36",
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "zh-CN,zh;q=0.9",
         "Connection": "Keep-Alive",
@@ -52,9 +53,10 @@ class Login {
       params: {ltId: this.lt},
       headers: {
         "Accept": "application/json, text/plain, */*",
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) " +
+        "User-Agent": "Mozilla/5.0 (Linux; Android 11; Redmi K20 Pro Build/RKQ1.200826.002) " +
           "AppleWebKit/537.36 (KHTML, like Gecko) " +
-          "Chrome/81.0.4044.122 Safari/537.36",
+          "Chrome/89.0.4389.82 " +
+          "Safari/537.36",
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "zh-CN,zh;q=0.9",
         "Connection": "Keep-Alive",
@@ -97,9 +99,10 @@ class Login {
       const {data} = await axios.post(this.school_url + "/iap/doLogin", body, {
         headers: {
           "Accept": "application/json, text/plain, */*",
-          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) " +
+          "User-Agent": "Mozilla/5.0 (Linux; Android 11; Redmi K20 Pro Build/RKQ1.200826.002) " +
             "AppleWebKit/537.36 (KHTML, like Gecko) " +
-            "Chrome/81.0.4044.122 Safari/537.36",
+            "Chrome/89.0.4389.82 " +
+            "Safari/537.36",
           "Accept-Encoding": "gzip, deflate, br",
           "Accept-Language": "zh-CN,zh;q=0.9",
           "Connection": "Keep-Alive",

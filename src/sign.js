@@ -23,9 +23,10 @@ class Sign {
     logger.debug("Start Get Forms...");
     const headers = {
       "Accept": "application/json, text/plain, */*",
-      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) " +
+      "User-Agent": "Mozilla/5.0 (Linux; Android 11; Redmi K20 Pro Build/RKQ1.200826.002) " +
         "AppleWebKit/537.36 (KHTML, like Gecko) " +
-        "Chrome/81.0.4044.122 Safari/537.36",
+        "Chrome/89.0.4389.82 " +
+        "Safari/537.36",
       "Accept-Encoding": "gzip, deflate, br",
       "Accept-Language": "zh-CN,zh;q=0.9",
       "Connection": "Keep-Alive",
@@ -150,24 +151,27 @@ class Sign {
     const forms = await this.fillForms(config);
     for (const form of forms) {
       const extension = {
-        "lon": form.form["longitude"],
-        "lat": form.form["latitude"],
-        "model": "OPPO R11 Plus",
-        "appVersion": "8.2.14",
-        "systemVersion": "8.0",
-        "userId": username,
-        "systemName": "android",
-        "deviceId": UUID.v1()
+        lon: form.form["longitude"],
+        lat: form.form["latitude"],
+        model: "Redmi K20 Pro",
+        appVersion: "8.2.21",
+        systemVersion: "11.0",
+        userId: username,
+        systemName: "android",
+        deviceId: UUID.v1()
       };
       const headers = {
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.4; OPPO R11 Plus Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Safari/537.36 okhttp/3.12.4',
-        'CpdailyStandAlone': '0',
-        'extension': '1',
-        'Cpdaily-Extension': DESEncrypt(JSON.stringify(extension)),
-        'Content-Type': 'application/json; charset=utf-8',
-        'Host': new URL(this.school_url).host,
-        'Connection': 'Keep-Alive',
-        'Accept-Encoding': 'gzip',
+        "User-Agent": "Mozilla/5.0 (Linux; Android 11; Redmi K20 Pro Build/RKQ1.200826.002) " +
+          "AppleWebKit/537.36 (KHTML, like Gecko) " +
+          "Chrome/89.0.4389.82 " +
+          "Safari/537.36",
+        "CpdailyStandAlone": "0",
+        "extension": "1",
+        "Cpdaily-Extension": DESEncrypt(JSON.stringify(extension)),
+        "Content-Type": 'application/json; charset=utf-8',
+        "Host": new URL(this.school_url).host,
+        "Connection": "Keep-Alive",
+        "Accept-Encoding": "gzip",
       };
       const res = await axios.post(this.school_url +
         "/wec-counselor-sign-apps/stu/sign/submitSign", form.form, {

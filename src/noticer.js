@@ -9,7 +9,7 @@ class Noticer {
 
   async sendNoticer(qq, msg) {
     if (!this.enable) return null;
-    const res = await axios.post("https://qmsg.zendee.cn/send/" + this.key, qs.stringify({
+    const res = await axios.post("https://qmsg2.zendee.cn/send/" + this.key, qs.stringify({
       qq, msg
     }));
     return res.data;

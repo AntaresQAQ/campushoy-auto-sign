@@ -16,7 +16,7 @@ users: #用户列表
 
 noticer:
   enable: false
-  secret_key: # Qmsg酱密钥，请前往 https://qmsg.zendee.cn/ 登录后获取
+  secret_key: # Qmsg酱密钥，请前往 https://qmsg2.zendee.cn/ 登录后获取
 
 captcha: # 自动打码
   enable: false

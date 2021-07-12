@@ -64,7 +64,7 @@ class Sign {
     const forms = await this.getForms();
     const config = [];
     forms.forEach(value => {
-      const fields = value["extraField"].map(value1 => {
+      const fields = value["extraField"] && value["extraField"].map(value1 => {
         const options = value1["extraFieldItems"].map(value2 => value2.content);
         return {
           title: value1.title,

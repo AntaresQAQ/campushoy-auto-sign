@@ -7,7 +7,7 @@
 # 部署指南
 请确保安装好了 nodejs 和 yarn
 ```bash
-git clone https://github.com/AntaresQAQ/campushoy-auto-submit.git
+git clone https://github.com/AntaresQAQ/campushoy-auto-sign.git
 cd campushoy-auto-submit
 yarn
 ```

@@ -8,7 +8,7 @@
 请确保安装好了 nodejs 和 yarn
 ```bash
 git clone https://github.com/AntaresQAQ/campushoy-auto-sign.git
-cd campushoy-auto-submit
+cd campushoy-auto-sign
 yarn
 ```
 等待依赖包安装完成，如果速度过慢请酌情更换镜像源

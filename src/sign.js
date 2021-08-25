@@ -69,8 +69,9 @@ class Sign {
         return {
           title: value1.title,
           options,
-          answer: ""
-        }
+          answer: "",
+          other: value1["hasOtherItems"] ? "" : undefined
+        };
       });
       config.push({
         title: value["taskName"],
@@ -127,10 +128,14 @@ class Sign {
           const extra_field_items = extra_field['extraFieldItems'];
           for (const extra_field_item of extra_field_items) {
             if (extra_field_item["content"] === config_extra_field.answer) {
-              extra_field_item_values.push({
+              const field_item_answer = {
                 extraFieldItemValue: config_extra_field.answer,
                 extraFieldItemWid: extra_field_item["wid"]
-              });
+              };
+              if(extra_field_item["isOtherItems"]) {
+                field_item_answer.extraFieldItemValue = config_extra_field.other;
+              }
+              extra_field_item_values.push(field_item_answer);
             }
           }
         }

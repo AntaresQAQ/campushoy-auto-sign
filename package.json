@@ -24,6 +24,7 @@
     "js-yaml": "^4.1.0",
     "moment": "^2.29.1",
     "node-schedule": "^2.0.0",
+    "oicq": "^1.21.2",
     "reflect-metadata": "^0.1.13",
     "tough-cookie": "^4.0.0",
     "uuid": "^8.3.2"

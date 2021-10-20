@@ -110,3 +110,6 @@ dist
 config.yaml
 forms
 tasks
+
+# Data
+data

@@ -9,6 +9,7 @@ import {
 import { CookieJar } from 'tough-cookie';
 import { v1 as UUIDv1 } from 'uuid';
 
+import { UserConfig } from '@/config/app-config.schema';
 import {
   TaskConfigExtraFieldsItem,
   TaskConfigItem,
@@ -23,7 +24,6 @@ import {
 } from '@/sign/types/detail-sign-instance-api';
 import { GetStuSignInfosInOneDayApi } from '@/sign/types/get-stu-sign-infos-in-one-day-api';
 import { SubmitSignApi } from '@/sign/types/submit-sign-api';
-import { UserConfig } from '@/user/types/common';
 
 export class Sign {
   private readonly client: Axios;
@@ -132,7 +132,7 @@ export class Sign {
     return config;
   }
 
-  private async fillForm(configTask: TaskConfigItem): Promise<TaskFrom> {
+  private async fillForm(configTask: TaskConfigItem): Promise<[string, TaskFrom]> {
     Logger.debug(`Starting Fill From whose Task's Name Like ${configTask.titleRegex}`);
     const taskRegex = new RegExp(configTask.titleRegex);
     const tasks = await this.getTasks();
@@ -188,11 +188,11 @@ export class Sign {
       }
     }
     Logger.debug('Filling Task Form Finished');
-    return form;
+    return [task.taskName, form];
   }
 
   async submit(task: TaskConfigItem): Promise<SubmitResult> {
-    const form = await this.fillForm(task);
+    const [name, form] = await this.fillForm(task);
     const extension = {
       lon: form.longitude,
       lat: form.latitude,
@@ -227,6 +227,7 @@ export class Sign {
     const response = res.data as SubmitSignApi;
     Logger.debug('Submitting Task Form Finished');
     return {
+      name,
       success: response.message === 'SUCCESS',
       message: response.message,
     };

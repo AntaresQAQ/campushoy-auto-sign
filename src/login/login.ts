@@ -5,11 +5,11 @@ import type { CookieJar } from 'tough-cookie';
 
 import { Captcha } from '@/captcha/captcha';
 import { IdentifyResult } from '@/captcha/types/common';
+import { LoginConfig, UserConfig } from '@/config/app-config.schema';
 import { Logger } from '@/logger';
-import { LoginConfig, LoginPostBody } from '@/login/types/common';
+import { LoginPostBody } from '@/login/types/common';
 import { DoLoginApi } from '@/login/types/do-login-api';
 import { School } from '@/school/school';
-import { UserConfig } from '@/user/types/common';
 
 function sleep(x) {
   return new Promise(resolve => setTimeout(resolve, x));

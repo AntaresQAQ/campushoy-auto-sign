@@ -10,7 +10,19 @@ import {
   ValidateNested,
 } from 'class-validator';
 
-class UserConfig {
+export class NoticerConfig {
+  @IsBoolean()
+  readonly enable: boolean;
+
+  @IsNumber()
+  readonly qq: number;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly password: string;
+}
+
+export class UserConfig {
   @IsString()
   @IsNotEmpty()
   readonly school: string;
@@ -41,7 +53,7 @@ class CaptchaLoginConfig {
   readonly pdKey: string;
 }
 
-class LoginConfig {
+export class LoginConfig {
   @IsNumber()
   @Min(0)
   readonly retryTimes: number;
@@ -59,6 +71,10 @@ export class AppConfigSchema {
   @ValidateNested()
   @Type(() => LoginConfig)
   readonly login: LoginConfig;
+
+  @ValidateNested()
+  @Type(() => NoticerConfig)
+  readonly noticer: NoticerConfig;
 
   @IsIn(['debug', 'info', 'warn', 'error'])
   readonly logLevel: 'debug' | 'info' | 'warn' | 'error';

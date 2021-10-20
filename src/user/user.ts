@@ -1,13 +1,14 @@
 import { CookieJar } from 'tough-cookie';
 
 import { AppConfig } from '@/config/app-config';
+import { UserConfig } from '@/config/app-config.schema';
 import { TaskConfig } from '@/config/task-config';
 import { Logger } from '@/logger';
 import { Login } from '@/login/login';
+import { Noticer } from '@/noticer/noticer';
 import { School } from '@/school/school';
 import { Sign } from '@/sign/sign';
 import { Task } from '@/task/task';
-import { UserConfig } from '@/user/types/common';
 
 export class User {
   // noinspection JSMismatchedCollectionQueryUpdate
@@ -20,6 +21,7 @@ export class User {
   constructor(
     private readonly appConfig: AppConfig,
     private readonly userConfig: UserConfig,
+    private readonly noticer: Noticer,
   ) {
     this.tasks = [];
     this.cookieJar = new CookieJar();
@@ -66,11 +68,13 @@ export class User {
 
   start() {
     Logger.info(
-      `Starting User ${this.userConfig.school}-${this.userConfig.username} Tasks...`,
+      `Registering User ${this.userConfig.school}-${this.userConfig.username} Tasks...`,
     );
     const { tasks } = this.taskConfig.getConfig();
     tasks.forEach(task => {
-      this.tasks.push(new Task(task, this.sign, this.userConfig));
+      if (task.enable) {
+        this.tasks.push(new Task(task, this.sign, this.noticer, this.userConfig));
+      }
     });
   }
 }

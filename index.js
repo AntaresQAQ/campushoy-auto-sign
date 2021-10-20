@@ -1,1 +1,0 @@
-(new (require("./src/index.js"))).run()

@@ -23,6 +23,7 @@ export class TaskFrom {
 }
 
 export class SubmitResult {
+  readonly name: string;
   readonly success: boolean;
   readonly message: string;
 }

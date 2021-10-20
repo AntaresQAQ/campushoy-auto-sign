@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc -p .",
     "clean": "rm -rf dist",
-    "start": "node -r tsconfig-paths/register dist/main.js | bunyan",
+    "start": "node -r tsconfig-paths/register dist/main.js | bunyan -L",
     "start-dev": "yarn clean && yarn build && yarn start"
   },
   "dependencies": {

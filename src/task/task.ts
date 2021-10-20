@@ -21,7 +21,7 @@ export class Task {
     });
     Logger.info(
       `User ${this.userConfig.school}-${this.userConfig.username} Task's ` +
-        `Name Like /${this.task.titleRegex}/ Will Run at ` +
+        `Name Like /${this.task.titleRegex}/ Will Run on ` +
         `${moment(this.getNextInvocation()).format('YYYY-MM-DD HH:mm:ss')}`,
     );
   }
@@ -57,7 +57,7 @@ export class Task {
     }
     Logger.info(
       `User ${this.userConfig.school}-${this.userConfig.username} Task's ` +
-        `Name Like /${this.task.titleRegex}/ Will Run at ` +
+        `Name Like /${this.task.titleRegex}/ Will Run on ` +
         `${moment(this.getNextInvocation()).format('YYYY-MM-DD HH:mm:ss')}`,
     );
   }

@@ -13,89 +13,94 @@ yarn
 ```
 等待依赖包安装完成，如果速度过慢请酌情更换镜像源
 
-```bash
-yarn start
-```
+复制一份模板配置文件
 
-如果环境配置正确，应该会有如下输出：
-```
-[xxxx-xx-xx xx:xx:xx][WARNING]: 配置文件已生成，请完成 config.yaml
+```bash
+cp config-emample.yaml config.yaml
 ```
 
 编辑文件`config.yaml`，样例如下：
-```yaml
-login:
-  retry_times: 5 # 登录重试次数
 
+```yaml
 users: #用户列表
   - school_name: # 用户1 学校名称
     username: # 用户1 用户名
     password: # 用户1 密码
-    cron: 0 30 8 * * * # 用户1 计划任务规则
-    qq: # 用户2 推送QQ号
+    qq: # 用户2 推送QQ号 选填
 
   - school_name: # 用户2 学校名称
     username: # 用户2 用户名
     password: # 用户2 密码
-    cron: 0 0 9 * * * # 用户2 计划任务规则
-    qq: # 用户2 推送QQ号
+    qq: # 用户2 推送QQ号 选填
 
-noticer:
-  enable: false
-  secret_key: # Qmsg酱密钥，请前往 https://qmsg.zendee.cn/ 登录后获取
+login:
+  retryTimes: 5 # 登录重试次数
+  captcha: # 自动打码
+    enable: false
+    pdId:  # 请前往 http://www.fateadm.com 获取 选填
+    pdKey: # 请前往 http://www.fateadm.com 获取 选填
 
-captcha: # 自动打码
-  enable: false
-  pd_id: # 请前往 http://www.fateadm.com 获取
-  pd_key: # 请前往 http://www.fateadm.com 获取
-
-log_level: info # 日志级别 debug/info/warning/error
+logLevel: info # 日志级别 debug/info/warn/error
 ```
 
-如果不会填写cron规则，可以使用 <https://www.bejson.com/othertools/cron/> 来生成
-
-完成后，再次执行
+完成后，执行
 
 ```bash
-yarn start
+AUTO_SIGN_CONFIG_FILE=./config.yaml yarn start
 ```
-此时输出如下：
-```
-[xxxx-xx-xx xx:xx:xx][WARNING]: 表单配置文件已生成，请完成 <school_name>-<user_name>.yaml
-```
-程序会根据你今日校园的信息收集表在`forms`目录下生成对应每个用户的配置文件`<school_name>-<user_name>.yaml`
+
+程序会根据你今日校园的信息收集表在`tasks`目录下生成对应每个用户的配置文件`<school_name>-<user_name>.yaml`
 
 生成的表单模板类似这样：
-```yaml
-- title: 每日健康监测及定位签到
-  enable: true
-  address: '' # 位置信息 
-  position: # 填写经纬度
-    lon: 0.0
-    lat: 0.0
-  abnormal_reason: '' # 异常原因，可不填
-  need_photo: false # 是否需要照片
-  photo_url: '' # 如果 need_photo 为 true 则需要填写图片地址
-  need_extra: true # 是否需要附加问题
-  extra_fields: # 如果 need_extra 为 true 则需要填写以下表单
-    - title: 你的身体健康状况是否正常 # 问题
-      options: # 选项
-        - 是
-        - 否
-      answer: 是 # 请填写选项上的答案
-    - title: 近14天你是否有过以下情况
-      options:
-        - 接触过新冠肺炎病例、疑似病例、无症状感染者
-        - 接触过境外返回人士
-        - 接触过中高风险区人士
-        - 没有以上三种情况
-      answer: 没有以上三种情况
-```
 
-请按照实际需求填写好表单配置文件，执行：
+```yaml
+tasks:
+  - enable: true
+    titleRegex: '\d+月\d+日体温监测和定位签到' # 匹配任务名的正则表达式
+    cron: 0 13 23 * * * # cron规则
+    address: 'xx省xx市xx区xx路'
+    position:
+      latitude: 0.1234 # 纬度
+      longitude: 5.6789 # 经度
+    abnormalReason: '' # 异常原因，可不填
+    needPhoto: false # 是否需要照片，无需修改
+    photoUrl: '' # 如果 needPhoto 为 true 则需要填写图片地址
+    needExtra: true # 是否需要附加问题，无需修改
+    extraFields: # 如果 needExtra 为 true 则需要填写以下表单
+      - title: 你今天上午的体温是
+        hasOther: true # 是否有其它选项
+        answer: '36.5' # 填写下面的选项，如果 hasOther 为 true 可以按需填写
+        options:
+          - 其它
+      - title: 你今天下午的体温是
+        hasOther: true # 是否有其它选项
+        answer: '36.5' # 填写下面的选项，如果 hasOther 为 true 可以按需填写
+        options:
+          - 其它
+      - title: 近14天你是否有过以下情况
+        hasOther: false # 是否有其它选项
+        answer: 没有以上三种情况 # 填写下面的选项，如果 hasOther 为 true 可以按需填写
+        options:
+          - 接触过新冠肺炎病例、疑似病例、无症状感染者
+          - 接触过境外返回人士
+          - 接触过中高风险区人士
+          - 没有以上三种情况
+      - title: 目前你所在位置或校区
+        hasOther: false # 是否有其它选项
+        answer: B校区
+        options:
+          - 在校外
+          - A校区
+          - B校区
+          - C校区
+
+```
+请按照实际需求填写好表单配置文件，如果不会填写cron规则，可以使用 <https://www.bejson.com/othertools/cron/> 来生成
+
+执行：
 
 ```bash
-yarn start
+AUTO_SIGN_CONFIG_FILE=./config.yaml yarn start
 ```
 
 程序开始运行。
@@ -113,7 +118,7 @@ screen -S jrxy
 在新的终端内执行
 
 ```bash
-yarn start
+AUTO_SIGN_CONFIG_FILE=./config.yaml yarn start
 ```
 
 按下<kbd>Ctrl</kbd>+<kbd>A</kbd>后，按<kbd>D</kbd>即可将终端切后台运行。

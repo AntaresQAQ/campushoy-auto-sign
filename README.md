@@ -10,6 +10,7 @@
 git clone https://github.com/AntaresQAQ/campushoy-auto-sign.git
 cd campushoy-auto-sign
 yarn
+yarn build
 ```
 等待依赖包安装完成，如果速度过慢请酌情更换镜像源
 

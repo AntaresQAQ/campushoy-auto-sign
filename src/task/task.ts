@@ -17,13 +17,22 @@ export class Task {
     private readonly userConfig: UserConfig,
   ) {
     this.job = scheduleJob(this.task.cron, () => {
-      this.handle().catch(reason => Logger.error(reason));
+      this.handle().catch(reason => {
+        Logger.error(reason);
+        this.noticer
+          .sendMessage(
+            `Signing Task /${this.task.titleRegex}/ Error: ${reason.toString()}`,
+            this.userConfig.qq,
+          )
+          .catch(reason1 => Logger.error(reason1));
+      });
     });
     Logger.info(
       `User ${this.userConfig.school}-${this.userConfig.username} Task's ` +
         `Name Like /${this.task.titleRegex}/ Will Run on ` +
         `${moment(this.getNextInvocation()).format('YYYY-MM-DD HH:mm:ss')}`,
     );
+    this.handle().catch(reason => Logger.error(reason));
   }
 
   getNextInvocation(): Date {

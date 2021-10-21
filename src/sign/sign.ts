@@ -90,19 +90,15 @@ export class Sign {
       signedTasks: [],
       unSignedTasks: [],
     };
-    if (response.datas.unSignedTasks instanceof Array) {
-      for (const task of response.datas.unSignedTasks) {
-        tasks.unSignedTasks.push(
-          await this.getTaskDetails(task.signInstanceWid, task.signWid),
-        );
-      }
+    for (const task of response.datas.unSignedTasks) {
+      tasks.unSignedTasks.push(
+        await this.getTaskDetails(task.signInstanceWid, task.signWid),
+      );
     }
-    if (response.datas.signedTasks instanceof Array) {
-      for (const task of response.datas.signedTasks) {
-        tasks.signedTasks.push(
-          await this.getTaskDetails(task.signInstanceWid, task.signWid),
-        );
-      }
+    for (const task of response.datas.signedTasks) {
+      tasks.signedTasks.push(
+        await this.getTaskDetails(task.signInstanceWid, task.signWid),
+      );
     }
     return tasks;
   }

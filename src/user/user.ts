@@ -33,6 +33,7 @@ export class User {
       `Loading Config for User ${this.userConfig.school}-${this.userConfig.username}`,
     );
     if (!this.taskConfig.getConfig()) {
+      await this.login.login();
       const newConfig = await this.sign.generateConfig();
       this.taskConfig.update(newConfig);
       await this.taskConfig.saveFile();
@@ -55,7 +56,6 @@ export class User {
         this.school,
         this.cookieJar,
       );
-      await this.login.login();
       this.sign = new Sign(this.school, this.userConfig, this.cookieJar);
       await this.loadTaskConfig();
     } catch (e) {

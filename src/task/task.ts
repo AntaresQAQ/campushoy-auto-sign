@@ -32,7 +32,6 @@ export class Task {
         `Name Like /${this.task.titleRegex}/ Will Run on ` +
         `${moment(this.getNextInvocation()).format('YYYY-MM-DD HH:mm:ss')}`,
     );
-    this.handle().catch(reason => Logger.error(reason));
   }
 
   getNextInvocation(): Date {

@@ -73,7 +73,9 @@ export class User {
     const { tasks } = this.taskConfig.getConfig();
     tasks.forEach(task => {
       if (task.enable) {
-        this.tasks.push(new Task(task, this.sign, this.noticer, this.userConfig));
+        this.tasks.push(
+          new Task(task, this.login, this.sign, this.noticer, this.userConfig),
+        );
       }
     });
   }

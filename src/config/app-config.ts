@@ -2,6 +2,7 @@ import { plainToClass } from 'class-transformer';
 import { validateSync } from 'class-validator';
 import fs from 'fs-extra';
 import yaml from 'js-yaml';
+import { join } from 'path';
 
 import { AppConfigSchema } from './app-config.schema';
 
@@ -9,11 +10,9 @@ export class AppConfig {
   readonly config: AppConfigSchema;
 
   constructor() {
-    const filePath = process.env.AUTO_SIGN_CONFIG_FILE;
-    if (!filePath) {
-      throw new Error(
-        'Please specify configuration file with environment variable AUTO_SIGN_CONFIG_FILE',
-      );
+    const filePath = join(__dirname, '..', '..', 'config.yaml');
+    if (!fs.existsSync(filePath)) {
+      throw new Error('Please Complete the Configuration File "config.yaml"');
     }
     const config = yaml.load(fs.readFileSync(filePath).toString());
     this.config = AppConfig.validateInput(config);

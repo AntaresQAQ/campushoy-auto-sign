@@ -112,8 +112,8 @@ export class Sign {
       taskConfigItem.enable = true;
       taskConfigItem.titleRegex = task.taskName;
       taskConfigItem.cron = '0 0 8 * * *';
-      taskConfigItem.address = '';
-      taskConfigItem.position = { latitude: 0, longitude: 0 };
+      taskConfigItem.address = 'xx省xx市xx区xx路';
+      taskConfigItem.position = { latitude: 0.1234, longitude: 5.6789 };
       taskConfigItem.abnormalReason = '';
       taskConfigItem.needPhoto = !!task.isPhoto;
       taskConfigItem.photoUrl = '';

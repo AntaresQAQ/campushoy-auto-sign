@@ -1,5 +1,5 @@
 {
-  "name": "campushoy-auto-submit",
+  "name": "campushoy-auto-sign",
   "version": "2.0.0",
   "description": "今日校园自动签到",
   "main": "dist/main.js",

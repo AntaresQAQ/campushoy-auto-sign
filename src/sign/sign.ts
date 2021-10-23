@@ -198,7 +198,7 @@ export class Sign {
       lon: form.longitude,
       lat: form.latitude,
       model: 'Redmi K20 Pro',
-      appVersion: '8.2.21',
+      appVersion: '9.0.12',
       systemVersion: '11.0',
       userId: this.userConfig.username,
       systemName: 'android',

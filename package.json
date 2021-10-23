@@ -11,7 +11,7 @@
     "build": "tsc -p .",
     "clean": "rm -rf dist",
     "start": "node -r tsconfig-paths/register dist/main.js | bunyan -L",
-    "start-dev": "yarn clean && yarn build && yarn start"
+    "start-dev": "ts-node -r tsconfig-paths/register src/main.ts | bunyan -L"
   },
   "dependencies": {
     "axios": "^0.23.0",

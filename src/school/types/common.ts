@@ -1,4 +1,4 @@
-import { TenantInfoApiDataItem } from '@/school/types/tenant-info-api';
+import { TenantInfoApiDataItem } from './tenant-info-api';
 
 export class SchoolListItem {
   readonly id: string;

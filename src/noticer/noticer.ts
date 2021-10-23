@@ -3,37 +3,11 @@ import { join } from 'path';
 
 import { NoticerConfig } from '@/config/app-config.schema';
 import { Logger } from '@/logger';
-import { Message } from '@/noticer/types/common';
+
+import { Queue } from './queue';
+import { Message } from './types/common';
 
 const INTERVAL_TIME = 1000;
-
-class Queue<T> {
-  private queue: T[];
-
-  constructor() {
-    this.queue = [];
-  }
-
-  push(item: T): void {
-    this.queue.push(item);
-  }
-
-  pop(): void {
-    this.queue = this.queue.slice(1);
-  }
-
-  empty(): boolean {
-    return !this.queue.length;
-  }
-
-  front(): T {
-    return this.queue[0];
-  }
-
-  back(): T {
-    return this.queue[this.queue.length - 1];
-  }
-}
 
 export class Noticer {
   private readonly client: Client;

@@ -1,4 +1,4 @@
-import { DetailSignInstanceApiDatas } from '@/sign/types/detail-sign-instance-api';
+import { DetailSignInstanceApiDatas } from './detail-sign-instance-api';
 
 export class TasksResult {
   readonly signedTasks: DetailSignInstanceApiDatas[];

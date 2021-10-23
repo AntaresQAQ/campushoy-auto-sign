@@ -4,8 +4,8 @@ import fs from 'fs-extra';
 import yaml from 'js-yaml';
 import { join } from 'path';
 
-import { UserConfig } from '@/config/app-config.schema';
-import { TaskConfigSchema } from '@/config/task-config.schema';
+import { UserConfig } from './app-config.schema';
+import { TaskConfigSchema } from './task-config.schema';
 
 export class TaskConfig {
   private static readonly fileDir = join(__dirname, '..', '..', 'tasks');

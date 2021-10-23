@@ -2,9 +2,10 @@ import axios from 'axios';
 import { MD5 } from 'crypto-js';
 import { stringify } from 'querystring';
 
-import { CapjustApi, CapregApi } from '@/captcha/types/capreg-api';
-import { IdentifyResult } from '@/captcha/types/common';
 import { Logger } from '@/logger';
+
+import { CapjustApi, CapregApi } from './types/capreg-api';
+import { IdentifyResult } from './types/common';
 
 export class Captcha {
   constructor(private readonly pdId: string, private readonly pdKey: string) {}

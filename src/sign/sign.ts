@@ -17,13 +17,14 @@ import {
 } from '@/config/task-config.schema';
 import { Logger } from '@/logger';
 import { School } from '@/school/school';
-import { SubmitResult, TaskFrom, TasksResult } from '@/sign/types/common';
+
+import { SubmitResult, TaskFrom, TasksResult } from './types/common';
 import {
   DetailSignInstanceApi,
   DetailSignInstanceApiDatas,
-} from '@/sign/types/detail-sign-instance-api';
-import { GetStuSignInfosInOneDayApi } from '@/sign/types/get-stu-sign-infos-in-one-day-api';
-import { SubmitSignApi } from '@/sign/types/submit-sign-api';
+} from './types/detail-sign-instance-api';
+import { GetStuSignInfosInOneDayApi } from './types/get-stu-sign-infos-in-one-day-api';
+import { SubmitSignApi } from './types/submit-sign-api';
 
 export class Sign {
   private readonly client: Axios;

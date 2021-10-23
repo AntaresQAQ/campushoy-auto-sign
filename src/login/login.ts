@@ -7,9 +7,10 @@ import { Captcha } from '@/captcha/captcha';
 import { IdentifyResult } from '@/captcha/types/common';
 import { LoginConfig, UserConfig } from '@/config/app-config.schema';
 import { Logger } from '@/logger';
-import { LoginPostBody } from '@/login/types/common';
-import { DoLoginApi } from '@/login/types/do-login-api';
 import { School } from '@/school/school';
+
+import { LoginPostBody } from './types/common';
+import { DoLoginApi } from './types/do-login-api';
 
 function sleep(x) {
   return new Promise(resolve => setTimeout(resolve, x));

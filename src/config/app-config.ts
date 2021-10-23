@@ -3,7 +3,7 @@ import { validateSync } from 'class-validator';
 import fs from 'fs-extra';
 import yaml from 'js-yaml';
 
-import { AppConfigSchema } from '@/config/app-config.schema';
+import { AppConfigSchema } from './app-config.schema';
 
 export class AppConfig {
   readonly config: AppConfigSchema;

@@ -47,7 +47,7 @@ logLevel: info # 日志级别 debug/info/warn/error
 完成后，执行
 
 ```bash
-AUTO_SIGN_CONFIG_FILE=./config.yaml yarn start
+yarn start
 ```
 
 程序会根据你今日校园的信息收集表在`tasks`目录下生成对应每个用户的配置文件`<school_name>-<user_name>.yaml`
@@ -101,7 +101,7 @@ tasks:
 执行：
 
 ```bash
-AUTO_SIGN_CONFIG_FILE=./config.yaml yarn start
+yarn start
 ```
 
 程序开始运行。
@@ -113,13 +113,13 @@ AUTO_SIGN_CONFIG_FILE=./config.yaml yarn start
 建议使用screen运行
 
 ```bash
-screen -S jrxy
+screen -S sign
 ```
 
 在新的终端内执行
 
 ```bash
-AUTO_SIGN_CONFIG_FILE=./config.yaml yarn start
+yarn start
 ```
 
 按下<kbd>Ctrl</kbd>+<kbd>A</kbd>后，按<kbd>D</kbd>即可将终端切后台运行。

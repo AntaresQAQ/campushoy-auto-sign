@@ -27,10 +27,20 @@ export class Noticer {
     if (!this.noticerConfig.enable) return;
     Logger.info(`Sending Message to ${qq} ...`);
     try {
-      await this.client.sendPrivateMsg(qq, msg);
+      let counter = 0;
+      while (true) {
+        const result = await this.client.sendPrivateMsg(qq, msg);
+        counter++;
+        if (!result.error) break;
+        Logger.warn(`Sending Message to ${qq} Fail, Msg: ${result.error.message}`);
+        if (counter > 3) {
+          // noinspection ExceptionCaughtLocallyJS
+          throw new Error(result.error.message);
+        }
+      }
       Logger.info(`Sending Message to ${qq} Succeed`);
     } catch (e) {
-      Logger.warn(`Sending Message to ${qq} Fail`);
+      Logger.error(e);
     }
   }
 }

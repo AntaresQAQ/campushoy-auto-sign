@@ -6,7 +6,7 @@
   "repository": "https://github.com/AntaresQAQ/campushoy-auto-sign.git",
   "author": "Antares <antares.oier@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "tsc -p .",
     "clean": "rm -rf dist",

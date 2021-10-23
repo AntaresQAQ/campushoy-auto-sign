@@ -53,7 +53,8 @@ export class Task {
           `${result.name} Submitting Succeed, Message: ${result.message}`,
       );
       await this.noticer.sendMessage(
-        `Signing Task "${result.name}" Submitted Succeed`,
+        `User ${this.userConfig.school}-${this.userConfig.username}'s ` +
+          `Signing Task "${result.name}" Submitted Succeed`,
         this.userConfig.qq,
       );
     } else {
@@ -62,7 +63,8 @@ export class Task {
           `${result.name} Submitting Fail, Message: ${result.message}`,
       );
       await this.noticer.sendMessage(
-        `Signing Task "${result.name}" Submitted Fail, Message: ${result.message}`,
+        `User ${this.userConfig.school}-${this.userConfig.username}'s ` +
+          `Signing Task "${result.name}" Submitted Fail, Message: ${result.message}`,
         this.userConfig.qq,
       );
     }

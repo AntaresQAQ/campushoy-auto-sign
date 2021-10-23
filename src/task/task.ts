@@ -21,12 +21,10 @@ export class Task {
     this.job = scheduleJob(this.task.cron, () => {
       this.handle().catch(reason => {
         Logger.error(reason);
-        this.noticer
-          .sendMessage(
-            `Signing Task /${this.task.titleRegex}/ Error: ${reason.toString()}`,
-            this.userConfig.qq,
-          )
-          .catch(reason1 => Logger.error(reason1));
+        this.noticer.sendMessage(
+          `Signing Task /${this.task.titleRegex}/ Error: ${reason.toString()}`,
+          this.userConfig.qq,
+        );
       });
     });
     Logger.info(
@@ -52,7 +50,7 @@ export class Task {
         `User ${this.userConfig.school}-${this.userConfig.username}'s Task ` +
           `${result.name} Submitting Succeed, Message: ${result.message}`,
       );
-      await this.noticer.sendMessage(
+      this.noticer.sendMessage(
         `User ${this.userConfig.school}-${this.userConfig.username}'s ` +
           `Signing Task "${result.name}" Submitted Succeed`,
         this.userConfig.qq,
@@ -62,7 +60,7 @@ export class Task {
         `User ${this.userConfig.school}-${this.userConfig.username}'s Task ` +
           `${result.name} Submitting Fail, Message: ${result.message}`,
       );
-      await this.noticer.sendMessage(
+      this.noticer.sendMessage(
         `User ${this.userConfig.school}-${this.userConfig.username}'s ` +
           `Signing Task "${result.name}" Submitted Fail, Message: ${result.message}`,
         this.userConfig.qq,

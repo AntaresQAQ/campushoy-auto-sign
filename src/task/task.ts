@@ -22,7 +22,8 @@ export class Task {
       this.handle().catch(reason => {
         Logger.error(reason);
         this.noticer.sendMessage(
-          `Signing Task /${this.task.titleRegex}/ Error: ${reason.toString()}`,
+          `User ${this.userConfig.school}-${this.userConfig.username}'s ` +
+            `Task /${this.task.titleRegex}/ Submission Error: ${reason.toString()}`,
           this.userConfig.qq,
         );
       });
@@ -48,21 +49,21 @@ export class Task {
     if (result.success) {
       Logger.info(
         `User ${this.userConfig.school}-${this.userConfig.username}'s Task ` +
-          `${result.name} Submitting Succeed, Message: ${result.message}`,
+          `${result.name} Submitted Successfully, Message: ${result.message}`,
       );
       this.noticer.sendMessage(
         `User ${this.userConfig.school}-${this.userConfig.username}'s ` +
-          `Signing Task "${result.name}" Submitted Succeed`,
+          `Task "${result.name}" Submitted Successfully`,
         this.userConfig.qq,
       );
     } else {
       Logger.warn(
         `User ${this.userConfig.school}-${this.userConfig.username}'s Task ` +
-          `${result.name} Submitting Fail, Message: ${result.message}`,
+          `${result.name} Submission Failed, Message: ${result.message}`,
       );
       this.noticer.sendMessage(
         `User ${this.userConfig.school}-${this.userConfig.username}'s ` +
-          `Signing Task "${result.name}" Submitted Fail, Message: ${result.message}`,
+          `Task "${result.name}" Submission Failed, Message: ${result.message}`,
         this.userConfig.qq,
       );
     }

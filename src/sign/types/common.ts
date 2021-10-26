@@ -10,7 +10,18 @@ class ExtraFieldItem {
   extraFieldItemValue: string;
 }
 
-export class TaskFrom {
+export class Extension {
+  readonly lon: number;
+  readonly lat: number;
+  readonly model: string;
+  readonly appVersion: string;
+  readonly systemVersion: string;
+  readonly userId: string;
+  readonly systemName: string;
+  readonly deviceId: string;
+}
+
+export class TaskForm {
   readonly signInstanceWid: string;
   readonly longitude: number;
   readonly latitude: number;
@@ -20,6 +31,13 @@ export class TaskFrom {
   readonly abnormalReason: string;
   readonly signPhotoUrl: string;
   readonly extraFieldItems?: ExtraFieldItem[];
+}
+
+export class CryptTaskForm extends Extension {
+  readonly bodyString: string;
+  readonly sign: string;
+  readonly calVersion: string;
+  readonly version: string;
 }
 
 export class SubmitResult {

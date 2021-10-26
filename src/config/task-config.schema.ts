@@ -57,7 +57,7 @@ export class TaskConfigItem {
 
   @IsString()
   @IsOptional()
-  photoUrl: string;
+  photoPath: string;
 
   @IsBoolean()
   needExtra: boolean;

@@ -51,6 +51,13 @@ export class TaskConfig {
     if (errors.length > 0) {
       throw new Error(`Config validation error: ${JSON.stringify(errors, null, 2)}`);
     }
+    for (const task of config.tasks) {
+      if (task.enable && task.needPhoto) {
+        if (!fs.existsSync(task.photoPath)) {
+          throw new Error(`File "${task.photoPath}" Not Found`);
+        }
+      }
+    }
     return config;
   }
 }

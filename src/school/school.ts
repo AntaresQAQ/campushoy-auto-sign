@@ -52,6 +52,11 @@ export class School {
       );
     }
     this.schoolInfo = response.data[0];
+
+    if (this.schoolInfo.joinType !== 'CLOUD') {
+      throw new Error('Only Support Cloud School');
+    }
+
     Logger.debug(
       `Your School Name is ${this.schoolInfo.name} And Url is ${this.schoolInfo.idsUrl}`,
     );

@@ -17,7 +17,7 @@ yarn build
 复制一份模板配置文件
 
 ```bash
-cp config-emample.yaml config.yaml
+cp config-example.yaml config.yaml
 ```
 
 编辑文件`config.yaml`，样例如下：

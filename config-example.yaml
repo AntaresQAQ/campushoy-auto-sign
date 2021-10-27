@@ -1,8 +1,8 @@
 users: #用户列表
   - school_name: # 用户1 学校名称
-    username: # 用户1 用户名
-    password: # 用户1 密码
-    qq: # 用户2 推送QQ号
+    username: # 用户1 用户名，必须是一个字符串，如果是数字学号请使用''或""
+    password: # 用户1 密码，必须是一个字符串
+    qq: # 用户2 推送QQ号，一个数字，选填
 
   - school_name: # 用户2 学校名称
     username: # 用户2 用户名
@@ -12,8 +12,13 @@ users: #用户列表
 login:
   retryTimes: 5 # 登录重试次数
   captcha: # 自动打码
-    enable: false
-    pdId:  # 请前往 http://www.fateadm.com 获取
-    pdKey: # 请前往 http://www.fateadm.com 获取
+    enable: false # 必须是 true 或 false
+    pdId:  # 请前往 http://www.fateadm.com 获取，选填
+    pdKey: # 请前往 http://www.fateadm.com 获取，选填
+
+noticer: # QQ消息推送
+  enable: false # 必须是 true 或 false
+  qq: # 负责推送消息的QQ号，一个数字，选填
+  password: # 负责推送消息的QQ密码，一个字符串，选填
 
 logLevel: info # 日志级别 debug/info/warn/error

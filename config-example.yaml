@@ -1,10 +1,10 @@
 users: #用户列表
-  - school_name: # 用户1 学校名称
+  - school: # 用户1 学校名称
     username: # 用户1 用户名，必须是一个字符串，如果是数字学号请使用''或""
     password: # 用户1 密码，必须是一个字符串
     qq: # 用户2 推送QQ号，一个数字，选填
 
-  - school_name: # 用户2 学校名称
+  - school: # 用户2 学校名称
     username: # 用户2 用户名
     password: # 用户2 密码
     qq: # 用户2 推送QQ号

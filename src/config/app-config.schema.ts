@@ -14,9 +14,11 @@ export class NoticerConfig {
   @IsBoolean()
   readonly enable: boolean;
 
+  @IsOptional()
   @IsNumber()
   readonly qq: number;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   readonly password: string;

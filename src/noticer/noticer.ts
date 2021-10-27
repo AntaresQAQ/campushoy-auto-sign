@@ -69,7 +69,13 @@ export class Noticer {
             this.job = null;
           }
         })
-        .catch(reason => Logger.error(reason));
+        .catch(reason => {
+          if (this.msgQueue.empty() && this.job) {
+            clearInterval(this.job);
+            this.job = null;
+          }
+          Logger.error(reason);
+        });
     }, INTERVAL_TIME);
   }
 

@@ -5,7 +5,10 @@
  nodejs 14+
 
 # 部署指南
+教程基于类UNIX操作系统，Windows操作系统请自行替换相关命令。
+
 请确保安装好了 nodejs 和 yarn
+
 ```bash
 git clone https://github.com/AntaresQAQ/campushoy-auto-sign.git
 cd campushoy-auto-sign

@@ -61,37 +61,20 @@ export class Noticer {
     Logger.debug(`Pushing ${msg.qq} Message Into Queue...`);
     this.msgQueue.push(msg);
     if (this.job) return;
-    this.job = setInterval(async () => {
-      try {
-        if (!(await this.send())) {
-          clearInterval(this.job);
-          this.job = null;
-        }
-      } catch (e) {
-        Logger.error(e);
-      }
+    this.job = setInterval(() => {
+      this.send()
+        .then(hasMessages => {
+          if (!hasMessages) {
+            clearInterval(this.job);
+            this.job = null;
+          }
+        })
+        .catch(reason => Logger.error(reason));
     }, INTERVAL_TIME);
   }
 
   sendMessage(msg: string, qq: number): void {
     if (!this.noticerConfig.enable) return;
-    // Logger.info(`Sending Message to ${qq} ...`);
-    // try {
-    //   let counter = 0;
-    //   while (true) {
-    //     const result = await this.client.sendPrivateMsg(qq, msg);
-    //     counter++;
-    //     if (!result.error) break;
-    //     Logger.warn(`Sending Message to ${qq} Fail, Msg: ${result.error.message}`);
-    //     if (counter > 3) {
-    //       // noinspection ExceptionCaughtLocallyJS
-    //       throw new Error(result.error.message);
-    //     }
-    //   }
-    //   Logger.info(`Sending Message to ${qq} Succeed`);
-    // } catch (e) {
-    //   Logger.error(e);
-    // }
     this.createSend({ message: msg, qq: qq, counter: 0 });
   }
 }

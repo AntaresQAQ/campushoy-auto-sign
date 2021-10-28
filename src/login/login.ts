@@ -1,7 +1,7 @@
 import axios, { Axios } from 'axios';
 import wrapper from 'axios-cookiejar-support';
 import { stringify } from 'querystring';
-import type { CookieJar } from 'tough-cookie';
+import { CookieJar } from 'tough-cookie';
 
 import { Captcha } from '@/captcha/captcha';
 import { IdentifyResult } from '@/captcha/types/common';

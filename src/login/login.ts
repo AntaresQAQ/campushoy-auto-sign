@@ -20,7 +20,6 @@ export class Login {
   private readonly client: Axios;
   private readonly captcha: Captcha;
   private readonly schoolUrl: string;
-  private lt: string;
 
   constructor(
     private readonly loginConfig: LoginConfig,
@@ -61,18 +60,19 @@ export class Login {
     });
   }
 
-  private async loadLt(): Promise<void> {
+  private async getLt(): Promise<string> {
     const res = await this.client.get(this.schoolUrl + '/iap/login', {
       params: { service: this.schoolUrl + '/portal/login' },
     });
-    this.lt = /_2lBepC=([^&]+)/g.exec(res.request.path)[1];
-    Logger.debug(`Successfully Get lt=${this.lt}`);
+    const lt = /_2lBepC=([^&]+)/g.exec(res.request.path)[1];
+    Logger.debug(`Successfully Get lt=${lt}`);
+    return lt;
   }
 
-  private async getCaptcha(): Promise<string> {
+  private async getCaptcha(lt: string): Promise<string> {
     Logger.debug('Getting Captcha...');
     const res = await this.client.get(this.schoolUrl + '/iap/generateCaptcha', {
-      params: { ltId: this.lt },
+      params: { ltId: lt },
       responseType: 'arraybuffer',
     });
     const response = res.data as Buffer;
@@ -85,6 +85,7 @@ export class Login {
     let counter = 0;
     let needCaptcha = false;
     while (true) {
+      const lt = await this.getLt();
       if (counter) {
         Logger.info(`Retrying... Number of Retries ${counter}`);
       }
@@ -93,7 +94,7 @@ export class Login {
         if (!this.loginConfig.captcha.enable) {
           throw new Error(`Require Enable Captcha Identify`);
         }
-        const image = await this.getCaptcha();
+        const image = await this.getCaptcha(lt);
         try {
           captchaResult = await this.captcha.identify(image);
         } catch (e) {
@@ -103,11 +104,11 @@ export class Login {
       const body: LoginPostBody = {
         username,
         password,
+        lt,
         mobile: '',
         dllt: '',
         captcha: captchaResult ? captchaResult.result : '',
         rememberMe: false,
-        lt: this.lt,
       };
       const res = await this.client.post(
         this.schoolUrl + '/iap/doLogin',
@@ -136,15 +137,16 @@ export class Login {
         }
       } else if (response.resultCode === 'LT_NOTMATCH') {
         Logger.warn(
-          `User ${this.userConfig.school}-${this.userConfig.username} Error LT, lt=${this.lt}`,
+          `User ${this.userConfig.school}-${this.userConfig.username} Error LT, lt=${lt}`,
         );
       } else if (response.resultCode === 'FAIL_UPNOTMATCH') {
-        Logger.warn(
+        throw new Error(
           `User ${this.userConfig.school}-${this.userConfig.username} Error Username or Password`,
         );
       } else {
         Logger.warn(
-          `User ${this.userConfig.school}-${this.userConfig.username} Unknown Error`,
+          `User ${this.userConfig.school}-${this.userConfig.username} ` +
+            `Unknown Error: ${response.resultCode}`,
         );
       }
       if (counter > retryTimes) {
@@ -157,7 +159,6 @@ export class Login {
   async login(): Promise<void> {
     Logger.debug(`Logging...`);
     await this.removeAllCookie();
-    await this.loadLt();
     await this.doLogin();
     Logger.debug(`Logging Finished`);
   }

@@ -1,10 +1,10 @@
 # campushoy-auto-sign
 今日校园自动签到
 
-# 运行环境
+## 运行环境
  nodejs 14+
 
-# 部署指南
+## 部署指南
 教程基于类UNIX操作系统，Windows操作系统请自行替换相关命令。
 
 请确保安装好了 nodejs 和 yarn
@@ -114,7 +114,7 @@ yarn start
 
 程序开始运行。
 
-## Q&A
+# Q&A
 
 ### 如何后台运行
 
@@ -164,3 +164,59 @@ yarn start
 3. 正确填写了经纬度和位置
 4. 检查表单一致性，不一致请重新生成表单
 
+## Issues
+### 准备
+请在`config.yaml`中修改`logLevel`为`debug`
+
+### 模板
+环境
+>MacOS 11.6 20G165 x86_64  
+>Node.js v17.0.1
+
+去掉敏感信息的日志
+```
+yarn run v1.22.17
+$ node -r tsconfig-paths/register dist/main.js | bunyan -L
+[2021-10-28T20:48:05.102+08:00] DEBUG: Auto Sign/65894 on Antares-Macbook.local: Loading School List...
+[2021-10-28T20:48:05.311+08:00] DEBUG: Auto Sign/65894 on Antares-Macbook.local: Successfully Get 2888 Schools
+[2021-10-28T20:48:05.311+08:00]  INFO: Auto Sign/65894 on Antares-Macbook.local: Initializing User 哈尔滨佛学院-这里是学号
+[2021-10-28T20:48:05.311+08:00] ERROR: Auto Sign/65894 on Antares-Macbook.local: User 哈尔滨佛学院-这里是学号 initialization failed
+[2021-10-28T20:48:05.312+08:00] ERROR: Auto Sign/65894 on Antares-Macbook.local: Could not find the school: 哈尔滨佛学院 
+    Error: Could not find the school: 哈尔滨佛学院 
+        at School.getSchoolItem (/Users/Antares/Repositories/campushoy-auto-sign/dist/school/school.js:28:19)
+        at new School (/Users/Antares/Repositories/campushoy-auto-sign/dist/school/school.js:11:14)
+        at User.init (/Users/Antares/Repositories/campushoy-auto-sign/dist/user/user.js:33:27)
+        at App.start (/Users/Antares/Repositories/campushoy-auto-sign/dist/app.js:20:28)
+        at processTicksAndRejections (node:internal/process/task_queues:96:5)
+        at async bootstrap (/Users/Antares/Repositories/campushoy-auto-sign/dist/main.js:8:5)
+✨  Done in 0.99s.
+```
+
+去掉敏感信息的 config.yaml
+```yaml
+users: #用户列表
+  - school: 哈尔滨佛学院
+    username: 这里是学号
+    password: 这里是密码
+    qq: 
+
+login:
+  retryTimes: 5
+  captcha:
+    enable: false
+    pdId:
+    pdKey: 
+
+noticer:
+  enable: false
+  qq:
+  password: 
+
+logLevel: debug
+```
+
+描述：
+
+我使用APP可以找到我的学校  
+但脚本无法找到我的学校  
+我的学校是：哈尔滨佛学院

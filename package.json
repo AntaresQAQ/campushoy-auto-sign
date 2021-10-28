@@ -14,7 +14,7 @@
     "start-dev": "ts-node -r tsconfig-paths/register src/main.ts | bunyan -L"
   },
   "dependencies": {
-    "axios": "^0.23.0",
+    "axios": "^0.24.0",
     "axios-cookiejar-support": "^1.0.1",
     "bunyan": "^1.8.15",
     "class-transformer": "^0.4.0",
@@ -28,6 +28,7 @@
     "oicq": "^1.21.2",
     "reflect-metadata": "^0.1.13",
     "tough-cookie": "^4.0.0",
+    "tsconfig-paths": "^3.11.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -47,7 +48,6 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.4.1",
     "ts-node": "^10.3.0",
-    "tsconfig-paths": "^3.11.0",
     "typescript": "^4.4.4"
   }
 }

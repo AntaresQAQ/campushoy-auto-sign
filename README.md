@@ -164,6 +164,16 @@ yarn start
 3. 正确填写了经纬度和位置
 4. 检查表单一致性，不一致请重新生成表单
 
+### Error:  Require Enable Captcha Identify
+- **解决方案一：**  
+  配置好验证码识别
+
+- **解决方案二：**  
+  把日志等级调整为debug  
+  在输出的日志内得到学校的登陆链接  
+  浏览器打开链接输入验证码登陆一次
+
+
 ## Issues
 ### 准备
 请在`config.yaml`中修改`logLevel`为`debug`

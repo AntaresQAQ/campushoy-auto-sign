@@ -174,7 +174,7 @@ yarn start
   浏览器打开链接输入验证码登陆一次
 
 
-## Issues
+## 提出 Issues
 ### 准备
 请在`config.yaml`中修改`logLevel`为`debug`
 

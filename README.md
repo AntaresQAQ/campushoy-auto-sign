@@ -1,4 +1,4 @@
-# campushoy-auto-sign
+# Campushoy Auto Sign
 今日校园自动签到
 
 目前仅支持以 CLOUD 方式接入的学校

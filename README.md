@@ -174,7 +174,8 @@ yarn start
 
 ### Error:  Require Enable Captcha Identify
 - **解决方案一：**  
-  配置好验证码识别
+  去[斐斐打码](http://www.fateadm.com)注册账号获取ID和KEY  
+  在`config.yaml`中配置好验证码识别
 
 - **解决方案二：**  
   在`config.yaml`中修改`logLevel`为`debug`  

@@ -7,15 +7,21 @@
 ## 部署指南
 教程基于类UNIX操作系统，Windows操作系统请自行替换相关命令。
 
-请确保安装好了 nodejs 和 yarn
+请确保安装好了 [Node.js](https://nodejs.org/zh-cn/download/) 和 [Yarn](https://yarn.bootcss.com/docs/install)
 
+对于服务器位于中国大陆的用户，请使用下面的命令更换更换镜像源
+```bash
+yarn config set registry https://registry.npm.taobao.org
+```
+
+执行以下命令
 ```bash
 git clone https://github.com/AntaresQAQ/campushoy-auto-sign.git
 cd campushoy-auto-sign
 yarn
 yarn build
 ```
-等待依赖包安装完成，如果速度过慢请酌情更换镜像源
+等待依赖包安装完成
 
 复制一份模板配置文件
 

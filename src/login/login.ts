@@ -1,4 +1,5 @@
-import axios, { Axios } from 'axios';
+import type { Axios } from 'axios';
+import axios from 'axios';
 import wrapper from 'axios-cookiejar-support';
 import { stringify } from 'querystring';
 import type { CookieJar } from 'tough-cookie';

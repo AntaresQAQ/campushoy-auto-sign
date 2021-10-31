@@ -1,4 +1,5 @@
-import axios, { Axios } from 'axios';
+import type { Axios } from 'axios';
+import axios from 'axios';
 import wrapper from 'axios-cookiejar-support';
 import CryptoJS from 'crypto-js';
 import FormData from 'form-data';

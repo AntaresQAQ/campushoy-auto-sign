@@ -1,4 +1,5 @@
-import { Client, createClient } from 'oicq';
+import type { Client } from 'oicq';
+import { createClient } from 'oicq';
 import { join } from 'path';
 
 import type { NoticerConfig } from '@/config/app-config.schema';

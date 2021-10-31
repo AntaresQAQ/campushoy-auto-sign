@@ -20,8 +20,4 @@ export class Queue<T> {
   front(): T {
     return this.queue[0];
   }
-
-  back(): T {
-    return this.queue[this.queue.length - 1];
-  }
 }

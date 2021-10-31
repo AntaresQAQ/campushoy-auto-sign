@@ -1,16 +1,16 @@
 import axios, { Axios } from 'axios';
 import wrapper from 'axios-cookiejar-support';
 import { stringify } from 'querystring';
-import { CookieJar } from 'tough-cookie';
+import type { CookieJar } from 'tough-cookie';
 
 import { Captcha } from '@/captcha/captcha';
-import { IdentifyResult } from '@/captcha/types/common';
-import { LoginConfig, UserConfig } from '@/config/app-config.schema';
+import type { IdentifyResult } from '@/captcha/types/common';
+import type { LoginConfig, UserConfig } from '@/config/app-config.schema';
 import { Logger } from '@/logger';
-import { School } from '@/school/school';
+import type { School } from '@/school/school';
 
-import { LoginPostBody } from './types/common';
-import { DoLoginApi } from './types/do-login-api';
+import type { LoginPostBody } from './types/common';
+import type { DoLoginApi } from './types/do-login-api';
 
 function sleep(x) {
   return new Promise(resolve => setTimeout(resolve, x));

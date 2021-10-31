@@ -1,4 +1,4 @@
-export class IdentifyResult {
+export interface IdentifyResult {
   id: string;
   result: string;
 }

@@ -4,8 +4,8 @@ import { stringify } from 'querystring';
 
 import { Logger } from '@/logger';
 
-import { CapjustApi, CapregApi } from './types/capreg-api';
-import { IdentifyResult } from './types/common';
+import type { CapjustApi, CapregApi } from './types/capreg-api';
+import type { IdentifyResult } from './types/common';
 
 export class Captcha {
   constructor(private readonly pdId: string, private readonly pdKey: string) {}

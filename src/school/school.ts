@@ -2,9 +2,9 @@ import axios from 'axios';
 
 import { Logger } from '@/logger';
 
-import { SchoolInfo, SchoolListItem } from './types/common';
-import { TenantInfoApi } from './types/tenant-info-api';
-import { TenantListSortApi } from './types/tenant-list-sort-api';
+import type { SchoolInfo, SchoolListItem } from './types/common';
+import type { TenantInfoApi } from './types/tenant-info-api';
+import type { TenantListSortApi } from './types/tenant-list-sort-api';
 
 export class School {
   private static readonly schoolList: SchoolListItem[] = [];

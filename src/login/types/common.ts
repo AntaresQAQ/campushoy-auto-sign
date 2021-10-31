@@ -1,4 +1,4 @@
-export class LoginPostBody {
+export interface LoginPostBody {
   readonly username: string;
   readonly password: string;
   readonly mobile: string;

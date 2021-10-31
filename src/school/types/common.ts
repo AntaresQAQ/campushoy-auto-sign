@@ -1,11 +1,11 @@
-import { TenantInfoApiDataItem } from './tenant-info-api';
+import type { TenantInfoApiDataItem } from './tenant-info-api';
 
-export class SchoolListItem {
+export interface SchoolListItem {
   readonly id: string;
   readonly name: string;
 }
 
-export class SchoolInfo implements TenantInfoApiDataItem {
+export interface SchoolInfo extends TenantInfoApiDataItem {
   readonly id: string;
   readonly name: string;
   readonly tenantCode: string;

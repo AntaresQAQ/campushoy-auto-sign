@@ -1,11 +1,11 @@
 import { Client, createClient } from 'oicq';
 import { join } from 'path';
 
-import { NoticerConfig } from '@/config/app-config.schema';
+import type { NoticerConfig } from '@/config/app-config.schema';
 import { Logger } from '@/logger';
 
 import { Queue } from './queue';
-import { Message } from './types/common';
+import type { Message } from './types/common';
 
 const INTERVAL_TIME = 1000;
 

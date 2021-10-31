@@ -1,11 +1,11 @@
 import { CookieJar } from 'tough-cookie';
 
-import { AppConfig } from '@/config/app-config';
-import { UserConfig } from '@/config/app-config.schema';
+import type { AppConfig } from '@/config/app-config';
+import type { UserConfig } from '@/config/app-config.schema';
 import { TaskConfig } from '@/config/task-config';
 import { Logger } from '@/logger';
 import { Login } from '@/login/login';
-import { Noticer } from '@/noticer/noticer';
+import type { Noticer } from '@/noticer/noticer';
 import { School } from '@/school/school';
 import { Sign } from '@/sign/sign';
 import { Task } from '@/task/task';

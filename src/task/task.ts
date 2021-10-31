@@ -1,12 +1,13 @@
 import moment from 'moment';
-import { Job, scheduleJob } from 'node-schedule';
+import type { Job } from 'node-schedule';
+import { scheduleJob } from 'node-schedule';
 
-import { UserConfig } from '@/config/app-config.schema';
-import { TaskConfigItem } from '@/config/task-config.schema';
+import type { UserConfig } from '@/config/app-config.schema';
+import type { TaskConfigItem } from '@/config/task-config.schema';
 import { Logger } from '@/logger';
-import { Login } from '@/login/login';
-import { Noticer } from '@/noticer/noticer';
-import { Sign } from '@/sign/sign';
+import type { Login } from '@/login/login';
+import type { Noticer } from '@/noticer/noticer';
+import type { Sign } from '@/sign/sign';
 
 export class Task {
   private readonly job: Job;

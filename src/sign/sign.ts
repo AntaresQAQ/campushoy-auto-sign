@@ -3,33 +3,33 @@ import wrapper from 'axios-cookiejar-support';
 import CryptoJS from 'crypto-js';
 import FormData from 'form-data';
 import { readFile } from 'fs-extra';
-import { CookieJar } from 'tough-cookie';
+import type { CookieJar } from 'tough-cookie';
 import { v1 as UUIDv1 } from 'uuid';
 
-import { UserConfig } from '@/config/app-config.schema';
+import type { UserConfig } from '@/config/app-config.schema';
 import {
   TaskConfigExtraFieldsItem,
   TaskConfigItem,
   TaskConfigSchema,
 } from '@/config/task-config.schema';
 import { Logger } from '@/logger';
-import { School } from '@/school/school';
+import type { School } from '@/school/school';
 
-import {
+import type {
   CryptTaskForm,
   Extension,
   SubmitResult,
   TaskForm,
   TasksResult,
 } from './types/common';
-import {
+import type {
   DetailSignInstanceApi,
   DetailSignInstanceApiDatas,
 } from './types/detail-sign-instance-api';
-import { GetStuSignInfosInOneDayApi } from './types/get-stu-sign-infos-in-one-day-api';
-import { GetUploadPolicyApi } from './types/get-upload-policy-api';
-import { PreviewAttachmentApi } from './types/preview-attachment-api';
-import { SubmitSignApi } from './types/submit-sign-api';
+import type { GetStuSignInfosInOneDayApi } from './types/get-stu-sign-infos-in-one-day-api';
+import type { GetUploadPolicyApi } from './types/get-upload-policy-api';
+import type { PreviewAttachmentApi } from './types/preview-attachment-api';
+import type { SubmitSignApi } from './types/submit-sign-api';
 
 const APP_VERSION = '9.0.12';
 const AES_KEY = 'ytUQ7l2ZZu8mLvJZ';

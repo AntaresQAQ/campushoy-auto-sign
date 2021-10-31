@@ -34,6 +34,6 @@ export interface DetailSignInstanceApiDatas {
 
 export interface DetailSignInstanceApi {
   readonly code: string;
-  readonly messgae: string;
+  readonly message: string;
   readonly datas: DetailSignInstanceApiDatas;
 }

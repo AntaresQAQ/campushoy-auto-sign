@@ -1,16 +1,16 @@
 import { DetailSignInstanceApiDatas } from './detail-sign-instance-api';
 
-export class TasksResult {
+export interface TasksResult {
   readonly signedTasks: DetailSignInstanceApiDatas[];
   readonly unSignedTasks: DetailSignInstanceApiDatas[];
 }
 
-class ExtraFieldItem {
+interface ExtraFieldItem {
   extraFieldItemWid: number;
   extraFieldItemValue: string;
 }
 
-export class Extension {
+export interface Extension {
   readonly lon: number;
   readonly lat: number;
   readonly model: string;
@@ -21,7 +21,7 @@ export class Extension {
   readonly deviceId: string;
 }
 
-export class TaskForm {
+export interface TaskForm {
   readonly signInstanceWid: string;
   readonly longitude: number;
   readonly latitude: number;
@@ -33,14 +33,14 @@ export class TaskForm {
   readonly extraFieldItems?: ExtraFieldItem[];
 }
 
-export class CryptTaskForm extends Extension {
+export interface CryptTaskForm extends Extension {
   readonly bodyString: string;
   readonly sign: string;
   readonly calVersion: string;
   readonly version: string;
 }
 
-export class SubmitResult {
+export interface SubmitResult {
   readonly name: string;
   readonly success: boolean;
   readonly message: string;

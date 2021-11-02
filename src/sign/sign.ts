@@ -199,22 +199,23 @@ export class Sign {
         const option = taskExtraFieldItem.extraFieldItems.find(
           item => item.content === configExtraFieldItem.answer,
         );
-        if (taskExtraFieldItem.hasOtherItems) {
-          const otherOption = taskExtraFieldItem.extraFieldItems.find(
-            item => !!item.isOtherItems,
-          );
-          form.extraFieldItems.push({
-            extraFieldItemWid: otherOption.wid,
-            extraFieldItemValue: configExtraFieldItem.answer,
-          });
-        } else {
-          if (!option) {
-            throw new Error('An Error Option On the Task Config File');
-          }
+        if (option) {
           form.extraFieldItems.push({
             extraFieldItemWid: option.wid,
             extraFieldItemValue: configExtraFieldItem.answer,
           });
+        } else {
+          if (taskExtraFieldItem.hasOtherItems) {
+            const otherOption = taskExtraFieldItem.extraFieldItems.find(
+              item => !!item.isOtherItems,
+            );
+            form.extraFieldItems.push({
+              extraFieldItemWid: otherOption.wid,
+              extraFieldItemValue: configExtraFieldItem.answer,
+            });
+          } else {
+            throw new Error('An Error Option On the Task Config File');
+          }
         }
       }
     }

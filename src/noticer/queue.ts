@@ -1,5 +1,5 @@
 export class Queue<T> {
-  private queue: T[];
+  private readonly queue: T[];
 
   constructor() {
     this.queue = [];
@@ -10,7 +10,7 @@ export class Queue<T> {
   }
 
   pop(): void {
-    this.queue = this.queue.slice(1);
+    this.queue.splice(0, 1);
   }
 
   empty(): boolean {

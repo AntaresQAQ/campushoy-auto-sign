@@ -30,6 +30,7 @@ export interface TaskForm {
   readonly uaIsCpadaily: boolean;
   readonly abnormalReason: string;
   readonly signPhotoUrl: string;
+  readonly isNeedExtra: number;
   readonly extraFieldItems?: ExtraFieldItem[];
 }
 

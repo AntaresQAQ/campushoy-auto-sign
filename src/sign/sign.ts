@@ -183,6 +183,7 @@ export class Sign {
       position: configTask.address,
       abnormalReason: configTask.abnormalReason,
       signPhotoUrl: photoUrl,
+      isNeedExtra: task.isNeedExtra,
       extraFieldItems: task.isNeedExtra ? [] : undefined,
     };
     if (task.isNeedExtra) {

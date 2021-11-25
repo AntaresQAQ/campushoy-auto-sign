@@ -74,7 +74,7 @@ yarn start
 tasks:
   - enable: true
     titleRegex: '\d+月\d+日体温监测和定位签到' # 匹配任务名的正则表达式
-    cron: 0 13 23 * * * # cron规则
+    cron: 10 0 12 * * ? # 不带年的cron规则，每天 12:00:10 执行
     address: 'xx省xx市xx区xx路'
     position:
       latitude: 0.1234 # 纬度
@@ -112,7 +112,7 @@ tasks:
           - C校区
 
 ```
-请按照实际需求填写表单配置文件，如果不会填写cron规则，可以使用 <https://www.bejson.com/othertools/cron/> 来生成
+请按照实际需求填写表单配置文件，如果不会填写cron规则，可以使用 <https://cron.qqe2.com/> 来生成，不要填写年（去掉最后一项）
 
 关于经纬度，要填写 [**BD-09坐标系**](https://lbsyun.baidu.com/index.php?title=coordinate) 的坐标，可以从百度提供的 [拾取坐标系统](https://api.map.baidu.com/lbsapi/getpoint/index.html) 获取，坐标尽量精确。
 

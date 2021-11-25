@@ -5,6 +5,8 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  Max,
+  Min,
   ValidateNested,
 } from 'class-validator';
 
@@ -25,9 +27,13 @@ export class TaskConfigExtraFieldsItem {
 
 export class TaskConfigPosition {
   @IsNumber()
+  @Min(-90)
+  @Max(90)
   longitude: number;
 
   @IsNumber()
+  @Min(-180)
+  @Max(180)
   latitude: number;
 }
 

@@ -16,12 +16,12 @@ export class NoticerConfig {
 
   @IsOptional()
   @IsNumber()
-  readonly qq: number;
+  readonly qq?: number;
 
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  readonly password: string;
+  readonly password?: string;
 }
 
 export class UserConfig {
@@ -39,7 +39,7 @@ export class UserConfig {
 
   @IsNumber()
   @IsOptional()
-  readonly qq: number;
+  readonly qq?: number;
 }
 
 class CaptchaLoginConfig {
@@ -48,11 +48,11 @@ class CaptchaLoginConfig {
 
   @IsString()
   @IsOptional()
-  readonly pdId: string;
+  readonly pdId?: string;
 
   @IsString()
   @IsOptional()
-  readonly pdKey: string;
+  readonly pdKey?: string;
 }
 
 export class LoginConfig {

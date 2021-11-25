@@ -4,7 +4,7 @@
 目前仅支持以 CLOUD 方式接入的学校
 
 ## 运行环境
-[Node.js](https://nodejs.org) 14+
+[Node.js](https://nodejs.org) 16+
 
 ## 部署指南
 教程基于类UNIX操作系统，Windows操作系统请自行替换相关命令。

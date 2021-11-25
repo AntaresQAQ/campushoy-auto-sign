@@ -36,21 +36,21 @@ cp config-example.yaml config.yaml
 ```yaml
 users: #用户列表
   - school: # 用户1 学校名称
-    username: # 用户1 用户名，必须是一个字符串，如果是数字学号请使用''或""
-    password: # 用户1 密码，必须是一个字符串
-    qq: # 用户2 推送QQ号，一个数字，选填
+    username: # 用户1 用户名，一个字符串
+    password: # 用户1 密码，一个字符串
+    qq: # 用户2 接收推送QQ号，一个数字，选填
 
-  - school: # 用户2 学校名称
-    username: # 用户2 用户名
-    password: # 用户2 密码
-    qq: # 用户2 推送QQ号
+  - school: # 用户2 格式同上
+    username:
+    password:
+    qq:
 
 login:
-  retryTimes: 5 # 登录重试次数
+  retryTimes: 5 # 登录重试次数，必须是大于0的数字
   captcha: # 自动打码
     enable: false # 必须是 true 或 false
-    pdId:  # 请前往 http://www.fateadm.com 获取，选填
-    pdKey: # 请前往 http://www.fateadm.com 获取，选填
+    pdId:  # 请前往 http://www.fateadm.com 获取，一个字符串，选填
+    pdKey: # 请前往 http://www.fateadm.com 获取，一个字符串，选填
 
 noticer: # QQ消息推送
   enable: false # 必须是 true 或 false
@@ -113,6 +113,8 @@ tasks:
 
 ```
 请按照实际需求填写表单配置文件，如果不会填写cron规则，可以使用 <https://www.bejson.com/othertools/cron/> 来生成
+
+关于经纬度，要填写 [**BD-09坐标系**](https://lbsyun.baidu.com/index.php?title=coordinate) 的坐标，可以从百度提供的 [拾取坐标系统](https://api.map.baidu.com/lbsapi/getpoint/index.html) 获取。
 
 填写好以后重新执行：
 

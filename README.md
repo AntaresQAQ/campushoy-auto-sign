@@ -11,7 +11,7 @@
 
 请确保安装好了 [Node.js](https://nodejs.org/zh-cn/download/) 和 [Yarn](https://yarn.bootcss.com/docs/install)
 
-对于服务器位于中国大陆的用户，请使用下面的命令更换更换镜像源
+对于服务器位于中国大陆的用户，建议使用下面的命令更换更换镜像源
 ```bash
 yarn config set registry https://registry.npm.taobao.org
 ```
@@ -114,7 +114,7 @@ tasks:
 ```
 请按照实际需求填写表单配置文件，如果不会填写cron规则，可以使用 <https://www.bejson.com/othertools/cron/> 来生成
 
-关于经纬度，要填写 [**BD-09坐标系**](https://lbsyun.baidu.com/index.php?title=coordinate) 的坐标，可以从百度提供的 [拾取坐标系统](https://api.map.baidu.com/lbsapi/getpoint/index.html) 获取。
+关于经纬度，要填写 [**BD-09坐标系**](https://lbsyun.baidu.com/index.php?title=coordinate) 的坐标，可以从百度提供的 [拾取坐标系统](https://api.map.baidu.com/lbsapi/getpoint/index.html) 获取，坐标尽量精确。
 
 填写好以后重新执行：
 

@@ -20,7 +20,7 @@ export class Noticer {
     this.msgQueue = new Queue<Message>();
     this.job = null;
     this.client = createClient(noticerConfig.qq, {
-      platform: 3,
+      platform: 2,
       log_level: 'off',
       data_dir: join(__dirname, '..', '..', 'data'),
     });
@@ -30,30 +30,32 @@ export class Noticer {
         Logger.error('Please Enter This Url to Finish Device Lock');
         process.exit(-1);
       })
-      .login(noticerConfig.password);
-    Logger.info(`Noticer QQ ${noticerConfig.qq} Logged Succeed`);
+      .login(noticerConfig.password)
+      .then(() => {
+        Logger.info(`Noticer QQ ${noticerConfig.qq} Logged Succeed`);
+      })
+      .catch(e => {
+        Logger.error(e);
+        process.exit(-1);
+      });
   }
 
   private async send(): Promise<boolean> {
-    if (this.msgQueue.empty()) {
-      return false;
-    }
+    if (this.msgQueue.empty()) return false;
     const msg = this.msgQueue.front();
     this.msgQueue.pop();
     Logger.info(`Sending Message to ${msg.qq} ...`);
-    const result = await this.client.sendPrivateMsg(msg.qq, msg.message);
-    if (result.error) {
-      Logger.warn(`Sending Message to ${msg.qq} Fail, Msg: ${result.error.message}`);
-      if (msg.counter >= 3) {
-        throw new Error(result.error.message);
-      }
+    try {
+      await this.client.sendPrivateMsg(msg.qq, msg.message);
+      Logger.info(`Sending Message to ${msg.qq} Succeed`);
+    } catch (err) {
+      if (msg.counter >= 3) throw err;
+      Logger.warn(`Sending Message to ${msg.qq} Fail, Msg: ${err.message}`);
       this.msgQueue.push({
         qq: msg.qq,
         message: msg.message,
         counter: msg.counter + 1,
       });
-    } else {
-      Logger.info(`Sending Message to ${msg.qq} Succeed`);
     }
     return true;
   }

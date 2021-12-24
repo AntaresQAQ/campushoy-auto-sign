@@ -340,6 +340,13 @@ axios-cookiejar-support@^1.0.1:
     is-redirect "^1.0.0"
     pify "^5.0.0"
 
+axios@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.npmmirror.com/axios/download/axios-0.23.0.tgz#b0fa5d0948a8d1d75e3d5635238b6c4625b05149"
+  integrity sha512-NmvAE4i0YAv5cKq8zlDoPd1VLKAqX5oLuZKs8xkJa4qi6RGn0uhCYFjWtHHC9EM/MwOwYWOs53W+V0aqEXq1sg==
+  dependencies:
+    follow-redirects "^1.14.4"
+
 axios@^0.24.0:
   version "0.24.0"
   resolved "https://registry.npmmirror.com/axios/download/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
@@ -1248,18 +1255,18 @@ object-keys@^1.0.12:
   resolved "https://registry.nlark.com/object-keys/download/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
   integrity sha1-HEfyct8nfzsdrwYWd9nILiMixg4=
 
-oicq@^1.21.2:
-  version "1.21.2"
-  resolved "https://registry.npmmirror.com/oicq/download/oicq-1.21.2.tgz#92bfc4031dc7a8bf4abe4500ff3d40512a36a5a3"
-  integrity sha1-kr/EAx3HqL9KvkUA/z1AUSo2paM=
+oicq@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.npmmirror.com/oicq/download/oicq-2.1.8.tgz#351f15f4bf08e2e593accd512fb191b41ef81aa1"
+  integrity sha512-HgMVPUZt1blIG4sIrvU3TxG0nVjexxfOg94PwYjEieexyJR178RSIcVRx5NIzj1L/tZOd2qqpOzwtEpvmxLMhg==
   dependencies:
+    axios "^0.23.0"
     jsqr "^1.4.0"
     log4js "^6.3.0"
     long "^4.0.0"
     pngjs "^6.0.0"
     probe-image-size "^7.2.1"
     qrcode-terminal "^0.12.0"
-    ws "^7.5.5"
 
 once@^1.3.0:
   version "1.4.0"
@@ -1671,11 +1678,6 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.nlark.com/wrappy/download/wrappy-1.0.2.tgz?cache=0&sync_timestamp=1619133505879&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwrappy%2Fdownload%2Fwrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
-
-ws@^7.5.5:
-  version "7.5.5"
-  resolved "https://registry.npmmirror.com/ws/download/ws-7.5.5.tgz?cache=0&sync_timestamp=1633200058938&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fws%2Fdownload%2Fws-7.5.5.tgz#8b4bc4af518cfabd0473ae4f99144287b33eb881"
-  integrity sha1-i0vEr1GM+r0Ec65PmRRCh7M+uIE=
 
 yallist@^4.0.0:
   version "4.0.0"

@@ -9,6 +9,9 @@
 [Node.js](https://nodejs.org) 16+
 
 ## 部署指南
+
+### 本地构建
+
 教程基于类UNIX操作系统，Windows操作系统请自行替换相关命令。
 
 请确保安装好了 [Node.js](https://nodejs.org/zh-cn/download/) 和 [Yarn](https://yarn.bootcss.com/docs/install)
@@ -27,7 +30,7 @@ yarn build
 ```
 等待依赖包安装完成
 
-复制一份模板配置文件
+<a name="mkcfg"></a>复制一份模板配置文件
 
 ```bash
 cp config-example.yaml config.yaml
@@ -70,7 +73,7 @@ yarn start
 
 程序会根据你今日校园的信息收集表在`tasks`目录下生成对应每个用户的配置文件`<school_name>-<user_name>.yaml`
 
-生成的表单模板类似这样：
+<a name="mktsk"></a>生成的表单模板类似这样：
 
 ```yaml
 tasks:
@@ -125,6 +128,37 @@ yarn start
 ```
 
 程序开始运行。
+
+### 使用Docker
+
+项目提供一个docker公共镜像，也可根据`docker/Dockerfile`自行构建。
+
+这里提供公共镜像使用指南。
+
+请确保安装好Docker，以ubuntu为例，执行`apt install docker.io`即可安装。
+
+```bash
+docker pull antaresqaq/campushoy-auto-sign:current
+```
+
+在宿主机准备好`config.yaml`和`tasks`文件夹，`config.yaml`填写方式见[本地构建](#mkcfg),`tasks`留空即可。
+
+```bash
+docker run -d --name auto-sign \
+           -v /path/to/config.yaml:/app/config.yaml \
+           -v /path/to/tasks:/app/tasks \
+      antaresqaq/campushoy-auto-sign:current
+```
+
+PS: 如果使用录消息推送，你可能需要检查docker日志内验证链接完成设备认证.
+
+完成`tasks`文件夹内的配置，填写方式见[本地构建](#mktsk)。
+
+完成后执行以下命令重启容器即可。
+
+```bash
+docker restart auto-sign
+```
 
 ## Q&A
 

@@ -131,7 +131,7 @@ yarn start
 
 ### 使用Docker
 
-项目提供一个docker公共镜像，也可根据`docker/Dockerfile`自行构建。
+项目提供一个docker公共镜像，也可根据`Dockerfile`自行构建。
 
 这里提供公共镜像使用指南。
 
@@ -150,7 +150,7 @@ docker run -d --name auto-sign \
       antaresqaq/campushoy-auto-sign:current
 ```
 
-PS: 如果使用录消息推送，你可能需要检查docker日志内验证链接完成设备认证.
+PS: 如果使用了消息推送，你可能需要检查docker日志获取验证链接完成设备认证.
 
 完成`tasks`文件夹内的配置，填写方式见[本地构建](#mktsk)。
 

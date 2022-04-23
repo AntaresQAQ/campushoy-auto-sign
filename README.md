@@ -160,6 +160,18 @@ PS: 如果使用了消息推送，你可能需要检查docker日志获取验证�
 docker restart auto-sign
 ```
 
+### 自行构建Docker容器
+
+先执行 `yarn build` 编译 TypeScript，然后执行 `docker build` 命令。
+
+```bash
+git clone https://github.com/AntaresQAQ/campushoy-auto-sign.git
+cd campushoy-auto-sign
+yarn
+yarn build
+docker build --tag yourname/campushoy-auto-sign:current .
+```
+
 ## Q&A
 
 ### 如何后台运行
@@ -217,8 +229,8 @@ yarn start
 
 - **解决方案二：**  
   在`config.yaml`中修改`logLevel`为`debug`  
-  在输出的日志内得到学校的登陆链接  
-  浏览器打开链接输入验证码登陆一次
+  在输出的日志内得到学校的登录链接  
+  浏览器打开链接输入验证码登录一次
 
 
 ## 提出 Issues

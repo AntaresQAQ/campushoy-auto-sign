@@ -45,7 +45,7 @@ users: #用户列表
     password: # 用户1 密码，一个字符串
     qq: # 用户2 接收推送QQ号，一个数字，选填
 
-  - school: # 用户2 格式同上
+  - school: # 用户2 格式同上，没有请删掉，但不可留空
     username:
     password:
     qq:

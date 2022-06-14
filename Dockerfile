@@ -6,7 +6,6 @@ COPY yarn.lock ./
 COPY tsconfig.json ./
 RUN yarn --registry https://registry.npmmirror.com/ install --production && mkdir tasks
 COPY dist ./dist
-COPY config-example.yaml ./config.yaml
 ENV TZ=Asia/Shanghai
 VOLUME ["/app/config.yaml", "/app/tasks"]
 CMD ["yarn", "start"]

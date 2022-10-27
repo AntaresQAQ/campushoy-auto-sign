@@ -1,10 +1,7 @@
 import type { Axios } from 'axios';
-import axios from 'axios';
-import wrapper from 'axios-cookiejar-support';
 import CryptoJS from 'crypto-js';
 import FormData from 'form-data';
 import { readFile } from 'fs-extra';
-import type { CookieJar } from 'tough-cookie';
 import { v1 as UUIDv1 } from 'uuid';
 
 import type { UserConfig } from '@/config/app-config.schema';
@@ -37,33 +34,14 @@ const AES_KEY = 'ytUQ7l2ZZu8mLvJZ';
 const DES_KEY = 'b3L26XNL';
 
 export class Sign {
-  private readonly client: Axios;
   private readonly schoolUrl: string;
 
   constructor(
     private readonly school: School,
     private readonly userConfig: UserConfig,
-    private readonly cookieJar: CookieJar,
+    private readonly client: Axios,
   ) {
     this.schoolUrl = school.getSchoolUrl();
-    this.client = wrapper(
-      axios.create({
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'User-Agent':
-            'Mozilla/5.0 (Linux; Android 11; Redmi K20 Pro Build/RKQ1.200826.002) ' +
-            'AppleWebKit/537.36 (KHTML, like Gecko) ' +
-            'Chrome/89.0.4389.82 ' +
-            'Safari/537.36',
-          'Accept-Encoding': 'gzip, deflate, br',
-          'Accept-Language': 'zh-CN,zh;q=0.9',
-          Connection: 'Keep-Alive',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        jar: cookieJar,
-        withCredentials: true,
-      }),
-    );
   }
 
   private async getTaskDetails(

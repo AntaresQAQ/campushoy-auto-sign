@@ -1,6 +1,4 @@
 import type { Axios } from 'axios';
-import axios from 'axios';
-import wrapper from 'axios-cookiejar-support';
 import { stringify } from 'querystring';
 import type { CookieJar } from 'tough-cookie';
 
@@ -18,7 +16,6 @@ function sleep(x) {
 }
 
 export class Login {
-  private readonly client: Axios;
   private readonly captcha: Captcha;
   private readonly schoolUrl: string;
 
@@ -26,27 +23,9 @@ export class Login {
     private readonly loginConfig: LoginConfig,
     private readonly userConfig: UserConfig,
     private readonly school: School,
-    private readonly cookieJar: CookieJar,
+    private readonly client: Axios,
   ) {
     this.schoolUrl = school.getSchoolUrl();
-    this.client = wrapper(
-      axios.create({
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'User-Agent':
-            'Mozilla/5.0 (Linux; Android 11; Redmi K20 Pro Build/RKQ1.200826.002) ' +
-            'AppleWebKit/537.36 (KHTML, like Gecko) ' +
-            'Chrome/89.0.4389.82 ' +
-            'Safari/537.36',
-          'Accept-Encoding': 'gzip, deflate, br',
-          'Accept-Language': 'zh-CN,zh;q=0.9',
-          Connection: 'Keep-Alive',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        jar: cookieJar,
-        withCredentials: true,
-      }),
-    );
     if (loginConfig.captcha.enable) {
       this.captcha = new Captcha(loginConfig.captcha.pdId, loginConfig.captcha.pdKey);
     }
@@ -54,7 +33,7 @@ export class Login {
 
   private removeAllCookie(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.cookieJar.removeAllCookies(err => {
+      (this.client.defaults.jar as CookieJar).removeAllCookies(err => {
         if (err) reject(err);
         resolve();
       });

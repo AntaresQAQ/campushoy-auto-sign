@@ -19,7 +19,7 @@ export class App {
   }
 
   async start() {
-    await School.initSchoolList();
+    await School.initSchoolList(this.appConfig.config.proxy);
     for (const user of this.users) {
       try {
         await user.init();

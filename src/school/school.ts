@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios, { Axios } from 'axios';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
 import { Logger } from '@/logger';
 
@@ -8,6 +9,7 @@ import type { TenantListSortApi } from './types/tenant-list-sort-api';
 
 export class School {
   private static readonly schoolList: SchoolListItem[] = [];
+  private static client: Axios;
 
   private schoolItem: SchoolListItem;
   private schoolInfo: SchoolInfo;
@@ -16,9 +18,17 @@ export class School {
     this.getSchoolItem(schoolName);
   }
 
-  static async initSchoolList(): Promise<void> {
+  static async initSchoolList(proxy?: string): Promise<void> {
+    School.client = axios.create({
+      proxy: false,
+      ...(proxy && { httpsAgent: new HttpsProxyAgent(proxy) }),
+    });
+
     Logger.debug('Loading School List...');
-    const res = await axios.get('https://static.campushoy.com/apicache/tenantListSort');
+    const res = await School.client.get(
+      'https://static.campushoy.com/apicache/tenantListSort',
+    );
+
     const response = res.data as TenantListSortApi;
     if (response.errCode !== 0) {
       throw new Error(`Can Not Get Schools List: ${response.errMsg}`);
@@ -39,7 +49,7 @@ export class School {
   }
 
   async loadSchoolInfo(): Promise<void> {
-    const res = await axios.get(
+    const res = await School.client.get(
       'https://mobile.campushoy.com/v6/config/guest/tenant/info',
       {
         params: { ids: this.schoolItem.id },

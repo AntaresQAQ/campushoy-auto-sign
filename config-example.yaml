@@ -25,4 +25,6 @@ noticer: # QQ消息推送
   qq: # 负责推送消息的QQ号，一个数字，选填
   password: # 负责推送消息的QQ密码，一个字符串，选填
 
+# proxy: http://username:password@127.0.0.1:8080 # Optional
+
 logLevel: info # 日志级别 debug/info/warn/error

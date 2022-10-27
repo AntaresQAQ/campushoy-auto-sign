@@ -6,6 +6,7 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  IsUrl,
   Min,
   ValidateNested,
 } from 'class-validator';
@@ -77,6 +78,10 @@ export class AppConfigSchema {
   @ValidateNested()
   @Type(() => NoticerConfig)
   readonly noticer: NoticerConfig;
+
+  @IsUrl()
+  @IsOptional()
+  readonly proxy?: string;
 
   @IsIn(['debug', 'info', 'warn', 'error'])
   readonly logLevel: 'debug' | 'info' | 'warn' | 'error';

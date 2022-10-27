@@ -62,6 +62,8 @@ noticer: # QQ消息推送
   qq: # 负责推送消息的QQ号，一个数字，选填
   password: # 负责推送消息的QQ密码，一个字符串，选填
 
+proxy: http://username:password@127.0.0.1:8080 # 代理，一个URL，支持http或https，选填
+
 logLevel: info # 日志级别 debug/info/warn/error
 ```
 
@@ -232,6 +234,14 @@ yarn start
   在输出的日志内得到学校的登录链接  
   浏览器打开链接输入验证码登录一次
 
+### HTTP ERROR CODE 418
+原因：目前推测是IP地址被今日校园加入了黑名单，解决方案如下：
+- 方案一：使用代理
+- 方案二：换一个IP
+
+### 设置环境变量代理后出现400
+axios的bug，目前通过其他方式绕过，请拉取最新代码并重新构建运行。 
+最新版本会忽略系统环境变量代理，并以`config.yaml`内代理设置作为唯一依据。
 
 ## 提出 Issues
 ### 准备
